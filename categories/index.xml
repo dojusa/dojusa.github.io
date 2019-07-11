@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Jusabe Blog</title>
-    <link>https://dojusa.dev/categories/</link>
+    <link>https://dojusa.github.io/categories/</link>
     <description>Recent content in Categories on Jusabe Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; 2019 Jusabe Guedes</copyright>
     <lastBuildDate>Tue, 28 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://dojusa.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dojusa.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>programming</title>
-      <link>https://dojusa.dev/categories/programming/</link>
+      <link>https://dojusa.github.io/categories/programming/</link>
       <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://dojusa.dev/categories/programming/</guid>
+      <guid>https://dojusa.github.io/categories/programming/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Elixir for Java Developers, Episode III - Jusabe Blog</title>
+<meta name="description" content="Behaviour, Protocol and Composition for the win!">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  
+<meta itemprop="name" content="Elixir for Java Developers, Episode III">
+<meta itemprop="description" content="Behaviour, Protocol and Composition for the win!">
+
+
+<meta itemprop="datePublished" content="2017-11-28T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-11-28T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1062">
+
+
+
+<meta itemprop="keywords" content="elixir,java,functional," />
+
+  <meta property="og:title" content="Elixir for Java Developers, Episode III" />
+<meta property="og:description" content="Behaviour, Protocol and Composition for the win!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dojusa.github.io/blog/elixir-for-java-developers-episode-iii/" />
+<meta property="article:published_time" content="2017-11-28T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2017-11-28T00:00:00&#43;00:00"/>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Elixir for Java Developers, Episode III"/>
+<meta name="twitter:description" content="Behaviour, Protocol and Composition for the win!"/>
+<meta name="twitter:site" content="@dojusa"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai-sublime.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      <link rel="stylesheet" href="/css/main.min.css">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+  
+  
+  
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          Bangolando
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        <a href="/" class="link"><i class="fas fa-home">&nbsp;</i>Home</a>
+      
+        <a href="/about/" class="link"><i class="far fa-id-card">&nbsp;</i>About</a>
+      
+      
+      
+
+    </menu>
+    
+
+    
+    
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/avatar-dojusa.jpg" class="triangle" width="180px" alt="Jusabe Guedes" /></a>
+  <header>
+    <h1>Jusabe Guedes</h1>
+  </header>
+  <main>
+    <p>Software Engineer - Traveler - Cuscuz Eater</p>
+  </main>
+  
+    <footer>
+      <ul class="social-icons">
+        
+        <li><a href="//github.com/dojusa" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/jusabe" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/dojusa" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/elixir-for-java-developers-episode-iii/">Elixir for Java Developers, Episode III</a></h2>
+    
+    
+        <p>Behaviour, Protocol and Composition for the win!</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2017-11-28 00:00:00 &#43;0000 UTC">
+      November 28, 2017
+    </time>
+    <span class="author"></span>
+    
+        <p>5 minute read</p>
+    
+  </div>
+</header>
+
+  <section id="social-share">
+    
+
+
+
+
+
+  </section>
+  
+
+  <div class="content">
+    
+
+<h2 id="intro">Intro</h2>
+
+<p>After covering some of the basics comparisons about Elixir and Java, it&rsquo;s time to compare more advanced topics. Here I&rsquo;ll talk about things like polymorphism, inheritance and composition.</p>
+
+<h2 id="interface-vs-behaviour">Interface vs Behaviour</h2>
+
+<p>In Java is common to achieve polymorphism through interfaces, abstract classes and methods. In Elixir we have behaviours and protocols providing polymorphism at the module and function level respectively.</p>
+
+<p>So comparing the two languages, Java interfaces is more likely to be translated to a combination between Elixir behaviours and protocols. For now let&rsquo;s explore Elixir&rsquo;s behaviour.</p>
+
+<pre><code class="language-java">//Java
+public interface Runner {
+    boolean run(MyRunnable runnable);
+    boolean stop();
+}
+</code></pre>
+
+<pre><code class="language-elixir">#Elixir
+defmodule Runner do
+  @callback run(runnable :: term) :: boolean
+  @callback stop :: boolean
+  
+  def call(element) do
+    IO.inspect element
+  end
+end
+</code></pre>
+
+<p>As you can see they look pretty similar. We need to tell both input and output types. The only difference is that an Elixir behaviour is declared as a module like any other but instead of implementing functions, we declare them using the <em>@callback</em> directive. Despite the function declarations isn&rsquo;t prohibited to have function implementation along side the aforementioned <em>@callback</em>. The call function is just an example of it.</p>
+
+<p>On the other hand Java expect us to be explicit right at the beginning with the interface reserved word. We also can&rsquo;t have any method implementation inside interfaces, unless it is declared as default(Java 8 or higher).</p>
+
+<p>Both usage are fairly simple:</p>
+
+<pre><code class="language-java">//Java
+class JobRunner implements Runner{
+  public boolean run(MyRunnable runnable) {
+    return true;
+  }
+  public boolean stop() {
+    return true;
+  }
+}
+</code></pre>
+
+<pre><code class="language-java">#Elixir
+defmodule JobRunner do
+  @behaviour Runner
+  def run(runnable), do: true
+  def stop, do: true
+end
+</code></pre>
+
+<p>Elixir&rsquo;s behaviours are just an way to declare a bunch of functions, which is not necessarily dynamically used depending on the context. Looking at the compiler perspective, interfaces and behaviours have one major distinction. The <strong>Java compiler won&rsquo;t compile our class unless we implement the mentioned interface</strong>.</p>
+
+<pre><code class="language-java">JobRunner.java:2: error: JobRunner is not abstract and does not override abstract method stop() in Runner
+</code></pre>
+
+<p>But the Elixir&rsquo;s compiler <strong>will just throw one warning</strong> for each unimplemented function that was declared by the behaviour, letting your code run freely.</p>
+
+<pre><code class="language-elixir">warning: undefined behaviour function run/1 (for behaviour Runner)
+warning: undefined behaviour function stop/0 (for behaviour Runner)
+</code></pre>
+
+<p><center>
+    <img src="/img/with-all-due-respect.gif" alt="alt text" title="with all due respect, it doesn't make sense" />
+</center></p>
+
+<p>I&rsquo;m sorry but I have no comment on that. If anyone has a good explanation to it, please leave a comment so I can update this post. =)</p>
+
+<h2 id="protocols">Protocols</h2>
+
+<p>Elixir&rsquo;s protocols are a very clever way to achieve polymorphism at function level. This means we can easily extend our implementation based on our type without having to change <em>&ldquo;interfaces&rdquo;</em>. To comprehend this let&rsquo;s see a silly Greeting example:</p>
+
+<pre><code class="language-elixir">#Elixir
+defprotocol Greeting do
+  @fallback_to_any true
+  def hello(element)
+end
+defimpl Greeting, for: Integer do
+  def hello(number), do: &quot;Hello number #{number}.&quot;
+end
+defimpl Greeting, for: Map do
+  def hello(map) do 
+    keys = Map.keys(map)
+    &quot;Hello map! Your keys are #{inspect(keys)}.&quot;
+  end
+end
+defimpl Greeting, for: Any do
+  def hello(_any), do: &quot;Hello! You can be anything.&quot;
+end
+
+#Here are some usage examples
+iex(1)&gt; Greeting.hello 5
+&quot;Hello number 5.&quot;
+iex(2)&gt; Greeting.hello %{first_name: &quot;foo&quot;, last_name: &quot;bar&quot;}
+&quot;Hello map! Your keys are [:first_name, :last_name]&quot;
+iex(3)&gt; Greeting.hello &quot;foo&quot;
+&quot;Hello! You can be anything.&quot;
+</code></pre>
+
+<p>The quickest way to achieve the exactly same abstraction in Java is by overloading the hello method inside a Greeting class. As you can see below this approach can lead to a gigantic class containing several implementations. Another way to obtain this level of abstraction is by creating an interface(or abstract class) generically typed (a.k.a <em>Greeting<T></em>) with a default implementation.</p>
+
+<pre><code class="language-java">//Java
+public class Greeting{
+  public static String hello(Integer integer){
+    return String.format(&quot;Hello number %d.&quot;, integer);
+  }
+  public static String hello(Object obj){
+    return &quot;Hello! You can be anything.&quot;;
+  }
+}
+//Here are some usage examples
+&gt; Greeting.hello(5);
+&quot;Hello number 5.&quot;
+&gt; Greeting.hello(&quot;foo&quot;);
+&quot;Hello! You can be anything.&quot;
+</code></pre>
+
+<p>Despite the various way we can accomplish &ldquo;Java protocols&rdquo;, I personally don&rsquo;t see any of them as equivalent to Elixir&rsquo;s. Using interfaces we still need to create some kind of factory, a concrete class and instantiate it. With protocols we get over the factory issue by default having a transparent experience.</p>
+
+<h2 id="inheritance-vs-composition">Inheritance vs Composition</h2>
+
+<p><strong>To begin with, Elixir does not have any kind of inheritance</strong>. However this isn&rsquo;t a problem at all. Elixir provide us powerful ways to compose modules using other modules and <strong>make code generate code</strong>.</p>
+
+<p>Even with the possibility to implement several interfaces, Java does not allow us to inherit from multiple ancestors, thus we must extend from one and only one class. Here is an elementary example:</p>
+
+<pre><code class="language-java">//Java
+public class Bar {
+  String bar(){
+    return &quot;bar&quot;;
+  }
+}
+public class Foo extends Bar{
+}
+//Usage
+&gt; new Foo().bar();
+&quot;bar&quot;
+</code></pre>
+
+<p>Now let&rsquo;s see the equivalent using Elixir.</p>
+
+<pre><code class="language-elixir">#Elixir
+defmodule Bar do
+  defmacro __using__(_opts) do
+    quote do
+      def bar do
+        &quot;bar&quot;
+      end
+    end
+  end
+end
+defmodule Foo do
+  use Bar
+end
+#Usage
+iex(1)&gt; Foo.bar
+&quot;bar&quot;
+</code></pre>
+
+<p>When we typed <code>use Bar</code> we were actually calling the <code>__using__</code> macro behind the scenes and the entire quote block will be injected into Foo module. In simple words we <strong>made code produce code</strong> by letting the <code>use</code> macro expand inside <em>Foo</em> <strong>at compile time</strong>.</p>
+
+<p><center>
+    <img src="/img/glass-off.gif" alt="alt text" title="glass off" />
+</center></p>
+
+<p>Elixir&rsquo;s macros are so powerful that I won&rsquo;t dare explain it here. It deserves an entire post, but if you are anxious there is an wonderful book called <a href="https://pragprog.com/book/cmelixir/metaprogramming-elixir">Metaprogramming Elixir</a> that explain everything in details.</p>
+
+<p>Putting macros aside for a moment, sometimes we just need to make some functions available inside a context. To this purpose we can import as many modules as we want. Let&rsquo;s rewrite the example above replacing the use by import word and see how it works:</p>
+
+<pre><code class="language-elixir">#Elixir
+defmodule Bar do
+  def bar do
+    &quot;bar&quot;
+  end
+end
+defmodule Foo do
+  import Bar
+  def call_bar do
+    bar()
+  end
+end
+</code></pre>
+
+<p>It will make all Bar&rsquo;s macros and functions accessible by Foo without the obligation of qualifying the Bar module. Java &lsquo;import static&rsquo; form could be a good correlation if you think that functions in Elixir are some sort of static methods.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Those are complex topics in both languages and I wanted to make just a shallow comparison between them. We merely scratched the surface so they deserve a more real life example of how we can leverage from things like Elixir metaprogramming.</p>
+
+<p>On the next posts I&rsquo;ll try to explore concepts like reflections and annotations. So if you want to see one specific topic, please let me know. =)</p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/categories/programming">programming</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/tags/elixir">elixir</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/tags/java">java</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/tags/functional">functional</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+<article class="post">
+  
+
+</article>
+<div class="pagination">
+  
+    <a href="/blog/elixir-for-java-developers-episode-ii/" class="button big previous"><i class="fas fa-angle-left"></i> Elixir for Java Developers, Episode II</a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/elixir-for-java-developers-episode-iii/">Elixir for Java Developers, Episode III</a></h1>
+          <time class="published" datetime="">November 28, 2017</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/elixir-for-java-developers-episode-ii/">Elixir for Java Developers, Episode II</a></h1>
+          <time class="published" datetime="">June 21, 2017</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/elixir-for-java-developers-episode-i/">Elixir for Java Developers, Episode I</a></h1>
+          <time class="published" datetime="">May 23, 2017</time>
+        </header>
+      </article>
+      
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="social-icons">
+        
+        <li><a href="//github.com/dojusa" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/jusabe" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/dojusa" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2019 Jusabe Guedes
+    .
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/ruby.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/elixir.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+
+    </div>
+  </body>
+</html>

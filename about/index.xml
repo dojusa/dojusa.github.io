@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About Jusabe Guedes on Jusabe Blog</title>
-    <link>https://dojusa.dev/about/</link>
+    <link>https://dojusa.github.io/about/</link>
     <description>Recent content in About Jusabe Guedes on Jusabe Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; 2019 Jusabe Guedes</copyright>
     
-	<atom:link href="https://dojusa.dev/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dojusa.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Elixir for Java Developers, Episode II - Jusabe Blog</title>
+<meta name="description" content="Keeping your flow under control with case, cond, if and exceptions">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  
+<meta itemprop="name" content="Elixir for Java Developers, Episode II">
+<meta itemprop="description" content="Keeping your flow under control with case, cond, if and exceptions">
+
+
+<meta itemprop="datePublished" content="2017-06-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-06-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1394">
+
+
+
+<meta itemprop="keywords" content="elixir,java,functional," />
+
+  <meta property="og:title" content="Elixir for Java Developers, Episode II" />
+<meta property="og:description" content="Keeping your flow under control with case, cond, if and exceptions" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dojusa.github.io/blog/elixir-for-java-developers-episode-ii/" />
+<meta property="article:published_time" content="2017-06-21T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2017-06-21T00:00:00&#43;00:00"/>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Elixir for Java Developers, Episode II"/>
+<meta name="twitter:description" content="Keeping your flow under control with case, cond, if and exceptions"/>
+<meta name="twitter:site" content="@dojusa"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai-sublime.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      <link rel="stylesheet" href="/css/main.min.css">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+  
+  
+  
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          Bangolando
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        <a href="/" class="link"><i class="fas fa-home">&nbsp;</i>Home</a>
+      
+        <a href="/about/" class="link"><i class="far fa-id-card">&nbsp;</i>About</a>
+      
+      
+      
+
+    </menu>
+    
+
+    
+    
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/avatar-dojusa.jpg" class="triangle" width="180px" alt="Jusabe Guedes" /></a>
+  <header>
+    <h1>Jusabe Guedes</h1>
+  </header>
+  <main>
+    <p>Software Engineer - Traveler - Cuscuz Eater</p>
+  </main>
+  
+    <footer>
+      <ul class="social-icons">
+        
+        <li><a href="//github.com/dojusa" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/jusabe" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/dojusa" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/elixir-for-java-developers-episode-ii/">Elixir for Java Developers, Episode II</a></h2>
+    
+    
+        <p>Keeping your flow under control with case, cond, if and exceptions</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2017-06-21 00:00:00 &#43;0000 UTC">
+      June 21, 2017
+    </time>
+    <span class="author"></span>
+    
+        <p>7 minute read</p>
+    
+  </div>
+</header>
+
+  <section id="social-share">
+    
+
+
+
+
+
+  </section>
+  
+
+  <div class="content">
+    
+
+<p>Hello everyone! It&rsquo;s time to take the second sip of our new drink! If you haven&rsquo;t seen the first episode, you can <a href="/blog/elixir-for-java-developers-episode-ii">read it here</a>. On this episode I&rsquo;m going to tackle how we control flows, do loops and handle exceptions in Elixir.</p>
+
+<h2 id="flow-control">Flow Control</h2>
+
+<p>In Java there are two main ways of controlling the execution flow which are the <code>if/else</code> and <code>switch/case</code> statements. Nothing fancy at the beginning:</p>
+
+<pre><code class="language-java">//Java
+if(x &gt; 0){
+  System.out.println(&quot;greater than zero&quot;);
+}else if(x &lt; 0){
+  System.out.println(&quot;less than zero&quot;);
+}else{
+  System.out.println(&quot;zero&quot;);
+}
+</code></pre>
+
+<pre><code class="language-elixir">#Elixir
+if x &gt; 0 do
+  IO.puts &quot;greater than zero&quot;
+else 
+  if x &lt; 0 do
+    IO.puts &quot;less than zero&quot;
+  else
+    IO.puts &quot;zero&quot; 
+  end
+end
+</code></pre>
+
+<p>Note that Elixir doesn&rsquo;t have an else if form to chain many checks, forcing us to embed the second if inside the else statement.</p>
+
+<p><center>
+    <img src="/img/whaat.gif" alt="alt text" title="whaat?!" />
+</center></p>
+
+<p>Don&rsquo;t panic! There is a much more elegant way of checking multiple boolean expressions.</p>
+
+<pre><code class="language-elixir">#Elixir
+cond do
+ x &gt; 0 -&gt;
+  IO.puts &quot;greater than zero&quot;
+ x &lt; 0 -&gt; 
+  IO.puts &quot;less than zero&quot;
+ true -&gt;
+  IO.puts &quot;zero&quot; 
+end
+</code></pre>
+
+<p>The <code>cond</code> structure will evaluate each statement top to bottom and execute the first block which the expression produces <code>true</code>. Placing <code>true</code> as last condition will have exactly the same behavior as the last Java <code>else</code>, executing it in case all previous conditions evaluate to false.</p>
+
+<p>Elixir also has a more idiomatic way of checking negative expressions using <code>unless</code> which is equivalent to <code>if(!expression)</code>. But there is one missing thing in Elixir that is the ternary boolean operator. Java easily accomplishes it with <code>?</code>. Let&rsquo;s see some examples.</p>
+
+<pre><code class="language-java">//Java
+if(!isValid(x)){
+  System.out.println(&quot;invalid&quot;);
+}
+int y = x &gt; 0 ? x + 1 : x - 1;
+</code></pre>
+
+<pre><code class="language-elixir">#Elixir
+unless is_valid(x), do: IO.puts &quot;invalid&quot;
+if !is_valid(x), do: IO.puts &quot;invalid&quot;
+y = if x &gt; 0, do: x + 1, else: x - 1
+</code></pre>
+
+<p>Differently from the Java <code>if</code> that allows only boolean expressions, in Elixir the structures <code>if/unless/cond</code> evaluate everything besides <code>nil</code> and <code>false</code> to <code>true</code>. It means that the code bellow is just fine.</p>
+
+<pre><code class="language-elixir">#Elixir
+x = &quot;foo&quot;
+if x do
+  IO.puts &quot;bar&quot;
+end
+y = nil
+cond do
+  y -&gt;
+    IO.puts &quot;will never get here&quot;
+  true -&gt;
+    IO.puts &quot;will be executed&quot;
+end
+</code></pre>
+
+<p>The other approach to change flows in Java is using <code>swich/case</code>. Beside its ugly format I personally don&rsquo;t like to use it due to its very odd behavior. Most cases we want to execute only the first block that matches our expression, but in Java we need to explicitly put a <code>break</code> in every <code>case</code>, otherwise all subsequents blocks will be executed whether the following cases matches or not our expression. Let&rsquo;s see how we can write code in both languages:</p>
+
+<pre><code class="language-java">//Java
+int x = 42;
+switch (x) {
+case 1:
+case 2:
+case 3:
+  System.out.println(&quot;Hi&quot;);
+  break;
+case 4:
+  System.out.println(&quot;Hello&quot;);
+  break;
+default:
+  System.out.println(&quot;whatever&quot;);
+}
+</code></pre>
+
+<pre><code class="language-elixir">#Elixir
+x = 42
+case x do
+  _ when x in [1, 2, 3]  -&gt; 
+    IO.puts &quot;Hi&quot;
+  4 -&gt; 
+    IO.puts &quot;Hello&quot;
+  &quot;bla bla bla&quot; -&gt;
+    IO.puts &quot;Talking too much&quot;
+  _ -&gt;
+    IO.puts &quot;this block will be executed&quot;
+end
+</code></pre>
+
+<p>Java <code>switch/case</code> is strongly typed and the switch&rsquo;s expression must evaluate to a String, char, byte, short, int or an enum. In addition to that all cases must have the same type. As you may have noticed, this level of rigor is not required in Elixir. We can try to pattern match <code>x</code> with anything we want and if nothing matches we can use the underscore wildcard <code>_</code> meaning anything. So every time you see an <code>_</code> alone, it means anything.</p>
+
+<p>To finish up the contrast between the two languages I need to mention that all four <code>if/unless/cond/case</code> will return values. Like Elixir functions, the result of the last instruction will be returned to the caller or nil if the block is not executed. It means we can code like this:</p>
+
+<pre><code class="language-elixir">#Elixir
+y = 
+  cond do
+    x == &quot;foo&quot; -&gt;
+      &quot;bar&quot;
+    true -&gt;
+      &quot;nothing&quot;
+  end
+</code></pre>
+
+<h2 id="loops">Loops</h2>
+
+<p>In Java we can iterate through collections or simply loop until one boolean expression is valid using for or while. Well.. we don&rsquo;t have any of those in Elixir.</p>
+
+<p><center>
+    <iframe src="https://giphy.com/embed/xYHscQ1Np55i8" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center></p>
+
+<p>Differently from imperative languages, Elixir is a functional language and it relies entirely on recursion to write any kind of loop. Think about <code>for/while</code> as function that will be called over and over until a condition is satisfied. To exemplify it let&rsquo;s write a positive pow function using loops:</p>
+
+<pre><code class="language-java">//Java
+public long pow(long number, int times) {
+  long acc = 1;
+  for(int i = 1; i&lt;=times; i++){
+    acc *= number;
+  }
+  return acc;
+}
+</code></pre>
+
+<pre><code class="language-elixir">#Elixir
+def pow(number, times), do:
+  do_pow(number, times, 1)
+defp do_pow(_, 0, acc), do: acc
+defp do_pow(number, times, acc), do:
+  do_pow(number, times-1, acc*number)
+</code></pre>
+
+<p>At this point I bet your clever mind doesn&rsquo;t stop thinking about the <code>java.lang.StackOverflowError</code> error that hunts those who careless use recursion. To prevent this kind of error Elixir uses the <a href="https://en.wikipedia.org/wiki/Tail_call">tail call optimization</a> feature. This feature has many aspects but trying to explain it in one sentence would be:</p>
+
+<blockquote>
+<p>When the last instruction of a function is a call to itself, instead of piling up a new frame to the execution stack, the last frame is replaced with the new frame.</p>
+</blockquote>
+
+<p>Before finish this section I&rsquo;ve the obligation to mention that Elixir do has an special form of <code>for</code>. It&rsquo;s just a syntactic sugar when we want to extract all values from a collection, optionally filter some of them, and then generate a new collection using the values that remain(a.k.a filter and map operation).</p>
+
+<pre><code class="language-elixir">#Elixir
+#will produce [4, 9]
+for x &lt;- [0, 1, 2, 3], x &gt; 1 do 
+  x * x
+end
+#equivalent to
+[0, 1, 2, 3]
+|&gt; Enum.filter_map(&amp;(&amp;1 &gt; 1), &amp;(&amp;1 * &amp;1))
+</code></pre>
+
+<h2 id="exceptions">Exceptions</h2>
+
+<p>Elixir doesn&rsquo;t suport inheritance like Java, nevertheless create custom exceptions are straightforward. We can even use a default message in case no message is given.</p>
+
+<pre><code class="language-java">//Java
+public class CustomException extends Exception{
+  public CustomException(String message) {
+    super(message);
+  }
+}
+
+```elixir
+#Elixir
+defmodule CustomException do
+  defexception message: &quot;houston we have a problem&quot;
+end
+</code></pre>
+
+<p>Java has <code>Error</code> and <code>Exception</code> which can be handled using <code>try/catch/finally</code>. Elixir doesn&rsquo;t separate errors and exceptions. They are the same thing and use a similar structure <code>try/rescue/after</code> to be handled. <strong>See all Elixir exceptions as RuntimeException(uncheked) because none of them require explicitly checking</strong>. Additionally we can use an <code>else</code> that will match the try&rsquo;s result(like a <code>case</code>) if no exception is raised.</p>
+
+<pre><code class="language-java">//Java
+try{
+  throw new CustomException(&quot;Houston we have a problem&quot;);
+}catch(NullPointerException | CustomException e){
+  System.out.println(e.getMessage());
+}catch(Exception e){
+  System.out.println(e.getMessage());
+}finally{
+  System.out.println(&quot;finally&quot;);
+}
+</code></pre>
+
+<pre><code class="language-elixir">#Elixir
+try do 
+  #will raise an RuntimeError with the message bellow
+  raise &quot;Houston we have a problem&quot;
+rescue
+  e in [RuntimeError, CustomException] -&gt; 
+    IO.puts e.message
+  e -&gt; 
+    IO.puts e.message
+else
+  42 -&gt; 
+    # some code
+  _ -&gt;
+    # some other code
+after
+  IO.puts &quot;finally&quot;
+end
+</code></pre>
+
+<p>Elixir also has the <code>try/throw/catch</code> form, but it&rsquo;s to return values from a block, not handle exceptions. We usually don&rsquo;t use it because there are simpler ways to achieve the same result. I see them like a Java <code>break</code> inside a loop. See how it works:</p>
+
+<pre><code class="language-elixir">#Elixir
+try do
+  letter = &quot;c&quot;
+  Enum.each [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;], fn(x) -&gt;
+    if letter == x, do: throw(x)
+  end
+catch
+  x -&gt; IO.puts x
+end
+</code></pre>
+
+<p>The tricky thing about Elixir&rsquo;s <code>try/catch/rescue/after</code> is that any variable change or new declaration inside its scope do not affect the outer scope(like functions). The block also returns values like <code>if</code>. To clear things up, here goes an example:</p>
+
+<pre><code class="language-elixir">#Elixir
+what = &quot;before try&quot;
+try do 
+  what = &quot;started try&quot;
+  raise &quot;houston we have a problem&quot;
+rescue
+  e -&gt; 
+    what = &quot;rescue&quot;
+after
+  what = &quot;after&quot;
+end
+#will print &quot;before try&quot;
+IO.puts what
+</code></pre>
+
+<p><strong>One nice Java feature absent in Elixir is the try-with-resource</strong>. For example, if we open a file we need to explicitly close it, like the old days before Java 7. Some people might argue that when an Elixir process dies, it will close the files. Even so this is not a option for long running processes.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Even little things like <code>if/else</code> or a simple loop can be very contrastive when we play with another language/paradigm. So far are just the basics, there is much more to cover.</p>
+
+<p>On the next episodes I will start covering more interesting concepts like pattern matching, polymorphism, parallelism and concurrency.</p>
+
+<p>Hope you have like this one. Let me know if you have any suggestion or comment =).</p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/categories/programming">programming</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/tags/elixir">elixir</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/tags/java">java</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://dojusa.github.io/tags/functional">functional</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+<article class="post">
+  
+
+</article>
+<div class="pagination">
+  
+    <a href="/blog/elixir-for-java-developers-episode-i/" class="button big previous"><i class="fas fa-angle-left"></i> Elixir for Java Developers, Episode I</a>
+  
+  
+    <a href="/blog/elixir-for-java-developers-episode-iii/" class="button big next">Elixir for Java Developers, Episode III <i class="fas fa-angle-right"></i></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/elixir-for-java-developers-episode-iii/">Elixir for Java Developers, Episode III</a></h1>
+          <time class="published" datetime="">November 28, 2017</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/elixir-for-java-developers-episode-ii/">Elixir for Java Developers, Episode II</a></h1>
+          <time class="published" datetime="">June 21, 2017</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/elixir-for-java-developers-episode-i/">Elixir for Java Developers, Episode I</a></h1>
+          <time class="published" datetime="">May 23, 2017</time>
+        </header>
+      </article>
+      
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="social-icons">
+        
+        <li><a href="//github.com/dojusa" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/jusabe" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/dojusa" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2019 Jusabe Guedes
+    .
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/ruby.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/elixir.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+
+    </div>
+  </body>
+</html>

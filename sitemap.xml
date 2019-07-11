@@ -3,70 +3,70 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://dojusa.dev/blog/</loc>
+    <loc>https://dojusa.github.io/blog/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/categories/</loc>
+    <loc>https://dojusa.github.io/categories/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/blog/elixir-for-java-developers-episode-iii/</loc>
+    <loc>https://dojusa.github.io/blog/elixir-for-java-developers-episode-iii/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/</loc>
-    <lastmod>2017-11-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dojusa.dev/tags/</loc>
+    <loc>https://dojusa.github.io/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/tags/elixir/</loc>
+    <loc>https://dojusa.github.io/tags/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/tags/functional/</loc>
+    <loc>https://dojusa.github.io/tags/elixir/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/tags/java/</loc>
+    <loc>https://dojusa.github.io/tags/functional/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/categories/programming/</loc>
+    <loc>https://dojusa.github.io/tags/java/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/blog/elixir-for-java-developers-episode-ii/</loc>
+    <loc>https://dojusa.github.io/categories/programming/</loc>
+    <lastmod>2017-11-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dojusa.github.io/blog/elixir-for-java-developers-episode-ii/</loc>
     <lastmod>2017-06-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/blog/elixir-for-java-developers-episode-i/</loc>
+    <loc>https://dojusa.github.io/blog/elixir-for-java-developers-episode-i/</loc>
     <lastmod>2017-05-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dojusa.dev/about/</loc>
+    <loc>https://dojusa.github.io/about/</loc>
   </url>
   
 </urlset>

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>programming on Jusabe Blog</title>
-    <link>https://dojusa.dev/categories/programming/</link>
+    <link>https://dojusa.github.io/categories/programming/</link>
     <description>Recent content in programming on Jusabe Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; 2019 Jusabe Guedes</copyright>
     <lastBuildDate>Tue, 28 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://dojusa.dev/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dojusa.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Elixir for Java Developers, Episode III</title>
-      <link>https://dojusa.dev/blog/elixir-for-java-developers-episode-iii/</link>
+      <link>https://dojusa.github.io/blog/elixir-for-java-developers-episode-iii/</link>
       <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://dojusa.dev/blog/elixir-for-java-developers-episode-iii/</guid>
+      <guid>https://dojusa.github.io/blog/elixir-for-java-developers-episode-iii/</guid>
       <description>Intro After covering some of the basics comparisons about Elixir and Java, it&amp;rsquo;s time to compare more advanced topics. Here I&amp;rsquo;ll talk about things like polymorphism, inheritance and composition.
 Interface vs Behaviour In Java is common to achieve polymorphism through interfaces, abstract classes and methods. In Elixir we have behaviours and protocols providing polymorphism at the module and function level respectively.
 So comparing the two languages, Java interfaces is more likely to be translated to a combination between Elixir behaviours and protocols.</description>
@@ -25,20 +25,20 @@ So comparing the two languages, Java interfaces is more likely to be translated 
     
     <item>
       <title>Elixir for Java Developers, Episode II</title>
-      <link>https://dojusa.dev/blog/elixir-for-java-developers-episode-ii/</link>
+      <link>https://dojusa.github.io/blog/elixir-for-java-developers-episode-ii/</link>
       <pubDate>Wed, 21 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://dojusa.dev/blog/elixir-for-java-developers-episode-ii/</guid>
+      <guid>https://dojusa.github.io/blog/elixir-for-java-developers-episode-ii/</guid>
       <description>Hello everyone! It&amp;rsquo;s time to take the second sip of our new drink! If you haven&amp;rsquo;t seen the first episode, you can read it here. On this episode I&amp;rsquo;m going to tackle how we control flows, do loops and handle exceptions in Elixir.
 Flow Control In Java there are two main ways of controlling the execution flow which are the if/else and switch/case statements. Nothing fancy at the beginning:</description>
     </item>
     
     <item>
       <title>Elixir for Java Developers, Episode I</title>
-      <link>https://dojusa.dev/blog/elixir-for-java-developers-episode-i/</link>
+      <link>https://dojusa.github.io/blog/elixir-for-java-developers-episode-i/</link>
       <pubDate>Tue, 23 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://dojusa.dev/blog/elixir-for-java-developers-episode-i/</guid>
+      <guid>https://dojusa.github.io/blog/elixir-for-java-developers-episode-i/</guid>
       <description>Recently I decided to change my way of thinking by learning a new programming language. I&amp;rsquo;ve been working with Java since the beginning of my career, so a totally different paradigm was necessary. Then I found this amazing language called Elixir.
 If you are from the Ruby world you&amp;rsquo;ve probably heard about Elixir. Perhaps even know its creator, José Valim. But if you come from a more verbose side the chances of being familiar with Elixir are pretty low.</description>
     </item>

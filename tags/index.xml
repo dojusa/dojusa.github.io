@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Jusabe Blog</title>
-    <link>https://dojusa.dev/tags/</link>
+    <link>https://dojusa.github.io/tags/</link>
     <description>Recent content in Tags on Jusabe Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; 2019 Jusabe Guedes</copyright>
     <lastBuildDate>Tue, 28 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://dojusa.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dojusa.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>elixir</title>
-      <link>https://dojusa.dev/tags/elixir/</link>
+      <link>https://dojusa.github.io/tags/elixir/</link>
       <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://dojusa.dev/tags/elixir/</guid>
+      <guid>https://dojusa.github.io/tags/elixir/</guid>
       <description></description>
     </item>
     
     <item>
       <title>functional</title>
-      <link>https://dojusa.dev/tags/functional/</link>
+      <link>https://dojusa.github.io/tags/functional/</link>
       <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://dojusa.dev/tags/functional/</guid>
+      <guid>https://dojusa.github.io/tags/functional/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
-      <link>https://dojusa.dev/tags/java/</link>
+      <link>https://dojusa.github.io/tags/java/</link>
       <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://dojusa.dev/tags/java/</guid>
+      <guid>https://dojusa.github.io/tags/java/</guid>
       <description></description>
     </item>
     
